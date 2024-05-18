@@ -5,7 +5,7 @@ const NoteItem = ({ note, onDeleteNote, onEditNote, onJumpToTimestamp }) => {
   const { timestamp, content, image, date } = note;
 
   return (
-    <div className="p-4 border rounded-lg shadow-sm bg-gray-200 m-10">
+    <div className="p-4 border rounded-lg shadow-sm mb-4">
       <div className="flex justify-between items-center mb-2">
         <span
           className="text-blue-500 cursor-pointer"
@@ -16,13 +16,15 @@ const NoteItem = ({ note, onDeleteNote, onEditNote, onJumpToTimestamp }) => {
         <span className="text-gray-500 text-sm">{new Date(date).toLocaleString()}</span>
       </div>
       <ReactQuill value={content} onChange={value => onEditNote(timestamp, value)} readOnly={false} theme="snow" />
-      {image && <img src={image} alt="Note" className="mt-2 max-w-full h-auto rounded-md" />}
-      <button
-        className="mt-2 w-28 md:w-32 px-4 py-2 bg-red-500 text-white rounded-lg"
-        onClick={() => onDeleteNote(timestamp)}
-      >
-        Delete
-      </button>
+      {image && <img src={image} alt="Note" className="mt-2 max-w-full h-auto" />}
+      <div className="flex justify-end space-x-2 mt-2">
+        <button
+          className="px-4 py-2 bg-red-500 text-white rounded"
+          onClick={() => onDeleteNote(timestamp)}
+        >
+          Delete note
+        </button>
+      </div>
     </div>
   );
 };

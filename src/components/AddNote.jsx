@@ -29,11 +29,11 @@ const AddNote = ({ currentTimestamp, onAddNote }) => {
   };
 
   return (
-    <div className="flex flex-col space-y-2 mb-4 bg-gray-200 p-4 m-10 rounded-lg">
+    <div className="flex flex-col space-y-4 p-4 border rounded-lg">
       <ReactQuill value={noteContent} onChange={setNoteContent} />
       <input type="file" accept="image/*" onChange={handleImageUpload} className="mt-2" />
       <button
-        className="px-4 w-28 md:w-40 rounded-lg py-2 bg-blue-500 text-white "
+        className="self-end px-4 py-2 bg-blue-500 text-white rounded"
         onClick={handleAddNote}
       >
         Add Note

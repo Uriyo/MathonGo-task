@@ -6,7 +6,7 @@ import './index.css';
 import Header from './components/Header';
 
 const App = () => {
-  const [videoId, setVideoId] = useState('m4Ics03xzUQ'); // Example video ID
+  const [videoId, setVideoId] = useState('dQw4w9WgXcQ'); // Example video ID
   const [inputVideoId, setInputVideoId] = useState(videoId);
   const [notes, setNotes] = useState([]);
   const [currentTimestamp, setCurrentTimestamp] = useState(0);
@@ -56,17 +56,18 @@ const App = () => {
   };
 
   return (
-    <div className="container mx-auto p-4 bg-black">
+    <div className="container mx-auto p-10">
       <Header/>
-      <div className="mb-6 flex flex-col items-center">
+      <div className="mb-6 flex flex-col md:flex-row justify-center items-center">
+        <div className='text-lg font-semibold'>Enter youtube video ID: </div>
         <input
           type="text"
           value={inputVideoId}
           onChange={e => setInputVideoId(e.target.value)}
-          className="p-2 border rounded mr-2"
-          placeholder='Provide youtube videoID'
+          className="p-2 border rounded m-3 text-black"
+          placeholder='Enter the youtube videoId'
         />
-        <button onClick={handleVideoIdChange} className="m-2  px-4 py-2 bg-blue-500 text-white rounded">
+        <button onClick={handleVideoIdChange} className="px-4 py-2 bg-blue-500 text-white rounded">
           Load Video
         </button>
       </div>
