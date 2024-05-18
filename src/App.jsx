@@ -6,7 +6,7 @@ import './index.css';
 import Header from './components/Header';
 
 const App = () => {
-  const [videoId, setVideoId] = useState('dQw4w9WgXcQ'); // Example video ID
+  const [videoId, setVideoId] = useState('m4Ics03xzUQ'); // Example video ID
   const [inputVideoId, setInputVideoId] = useState(videoId);
   const [notes, setNotes] = useState([]);
   const [currentTimestamp, setCurrentTimestamp] = useState(0);
