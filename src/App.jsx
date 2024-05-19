@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import VideoPlayer from './components/VideoPlayer';
 import NotesList from './components/NotesList';
 import AddNote from './components/AddNote';
-import './index.css';
 import Header from './components/Header';
+import './index.css';
 
 const App = () => {
-  const [videoId, setVideoId] = useState('kkZ7B-Fv-ck'); // Example video ID
-  const [inputVideoId, setInputVideoId] = useState(videoId);
+  const [videoUrl, setVideoUrl] = useState('https://www.youtube.com/watch?v=7JZP345yVjw'); // Example video URL
+  const [videoId, setVideoId] = useState('7JZP345yVjw');
   const [notes, setNotes] = useState([]);
   const [currentTimestamp, setCurrentTimestamp] = useState(0);
   const playerRef = useRef(null);
@@ -20,6 +20,11 @@ const App = () => {
       setNotes([]);
     }
   }, [videoId]);
+
+  const extractVideoId = (url) => {
+    const urlObj = new URL(url);
+    return urlObj.searchParams.get("v");
+  };
 
   const handleProgress = state => {
     setCurrentTimestamp(Math.floor(state.playedSeconds));
@@ -51,23 +56,25 @@ const App = () => {
     }
   };
 
-  const handleVideoIdChange = () => {
-    setVideoId(inputVideoId);
+  const handleVideoUrlChange = () => {
+    const id = extractVideoId(videoUrl);
+    if (id) {
+      setVideoId(id);
+    }
   };
 
   return (
-    <div className="container mx-auto p-10">
+    <div className="container mx-auto p-4">
       <Header/>
-      <div className="mb-6 flex flex-col md:flex-row justify-center items-center">
-        <div className='text-lg font-semibold'>Enter youtube video ID: </div>
+      <div className="mb-6 flex flex-col md:flex-row justify-center">
         <input
           type="text"
-          value={inputVideoId}
-          onChange={e => setInputVideoId(e.target.value)}
-          className="p-2 border rounded m-3 text-black"
-          placeholder='Enter the youtube videoId'
+          value={videoUrl}
+          onChange={e => setVideoUrl(e.target.value)}
+          className="p-2 border rounded m-3 text-black placeholder-gray-700"
+          placeholder="Enter the YouTube video URL"
         />
-        <button onClick={handleVideoIdChange} className="px-4 py-2 bg-blue-500 text-white rounded">
+        <button onClick={handleVideoUrlChange} className="px-4 py-0 w-28 mt-3 h-11 bg-blue-500 text-white rounded-md">
           Load Video
         </button>
       </div>

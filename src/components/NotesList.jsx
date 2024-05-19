@@ -5,7 +5,7 @@ const NotesList = ({ notes, onDeleteNote, onEditNote, onJumpToTimestamp }) => {
   return (
     <div className="p-4 border rounded-lg shadow-md">
       <h2 className="text-lg font-semibold mb-4">My notes</h2>
-      <p className="text-sm text-gray-500 mb-4">
+      <p className="text-sm text-gray-500 mb-4 text-white">
         All your notes at a single place. Click on any note to go to specific timestamp in the video.
       </p>
       {notes.map(note => (
